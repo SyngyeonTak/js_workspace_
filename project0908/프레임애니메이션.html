@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+        var n = 1;//변수명을 정의할 때는 반드시 영문으로 해야함
+                        //특수문자도 허용하지 않음(허용 예외 - $, _(언더바) 는 가능)
+                        //숫자로 시작해서도 안됨 ex) 3x(안됨) = 6;
+        function next(){
+            //문서내의 pic이라 불리는 요소의 src속성을 교체!
+            n = n+1;
+            document.getElementById("pic").src = "../img/hero/image"+n+".png";
+        }
+    </script>
+</head>
+<body>
+    <div id = "wrapper">
+        <img id = "pic" src = "../img/hero/image1.png"/>
+    </div>
+    <button onClick="next()">다음 프레임 보기</button>
+</body>
+</html>

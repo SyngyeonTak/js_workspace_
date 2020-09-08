@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+/*메뉴들을 묶어놓을 박스에 대한 클래스 정의*/
+.menu{
+	width:190px;
+	background:yellow;
+}
+/*선택자는 조합하여 사용할 수 있따. 선택자 뒤에 한칸을 띄우면 하위 요소를 가리키는 것임 */
+.menu a{
+	display:block; /* 인라인 속성을 블럭으로 전환: 너비와 높이가 가능..즉 크기를 가질수있다*/
+	text-decoration:none;/*밑줄 없애기*/
+	background-color:#eeeeee;
+	color:#000000;
+	/*a 태그를 이루는 박스와, 그 안에 있는 글씨가 즉 내용물이 너무 붙었다..좀 간격을 두자*/
+	padding:10px;
+}
+/*유사클래스를 이용하여 링크태그에 마우스 올려놓으면 배경색 바꾸기*/
+.menu a:hover{
+	background-color:#cccccc;
+}
+
+/*a태그에 적용된 클래스*/
+.menu a.active{
+	background-color:#4CAF50;
+	color:#FFFFFF;
+}
+</style>
+</head>
+<body>
+	<div class="menu">
+		<a href="#" class="active">1일차</a>
+		<a href="./project0908/자바스크립트시작.html" target="myframe">자바스크립트시작</a>
+		<a href="./project0908/겔러리1.html" target="myframe">겔러리</a>
+		<a href="./project0908/페이딩효과.html" target="myframe">페이딩효과</a>
+		<a href="./project0908/프레임애니메이션.html" target="myframe">프레임애니메이션</a>
+
+	</div>
+	
+
+</body>
+</html>
