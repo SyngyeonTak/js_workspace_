@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    //alert('문서를 다 읽었어요');
+
+    var posX = 100;
+    var posY = 50;
+    var x = 5;
+    var y = 5;
+
+    var ball;
+    var wrapper;
+    var w;
+    var h;
+    var ballW;
+    var ballH;
+    var flag = true;
+    function init(){
+        createButton();
+
+        wrapper=document.createElement("div"); // <div></div>와 동일
+        w = wrapper.style.width=600+"px";
+        h = wrapper.style.height=550+"px";
+
+        w = parseInt(w);
+        h = parseInt(h);
+        wrapper.style.background="yellow";
+        wrapper.style.margin="auto";
+        wrapper.style.position="relative";//자식때문에...
+        document.body.appendChild(wrapper); // <body>태그 안에 추가
+
+        //공 추가하기 
+        ball=document.createElement("img"); // <img /> 와 동일
+        ball.src="../../../images/basketball.png"; // <img src=""/> 와 동일
+        ballW = ball.style.width=50+"px";
+        ballH =ball.style.height=50+"px";
+        ballW = parseInt(ballW);
+        ballH = parseInt(ballH);
+        ball.style.position="absolute"; //부모인 wrapper를 기준
+        ball.style.left=100+"px";
+        ball.style.top=50+"px";
+        wrapper.appendChild(ball);//body에 추가 
+
+}
+
+    function createButton(){
+        //동적으로 버튼을 생성하고, click 이벤트 마저도 프로그래밍적으로 처리해보자
+        var bt1 = document.createElement("button");//수동버튼
+        var bt2 = document.createElement("button");//자동버튼
+        var bt3 = document.createElement("button");//자동버튼
+        
+        bt1.innerText = "수동버튼";
+        bt2.innerText = "자동버튼";
+        bt3.innerText = "Pause";
+
+        //버튼에 click이벤트 추가하기!!
+         bt1.addEventListener("click", function(){
+            //이름없는 함수를 익명(annoymous)함수라 하고, 이 영역에 코드를 작성하면
+            //해당 이벤트가 발생했을 때, 이 코드가 동작하게 된다.
+            //  alert("나 눌렀어?");
+            move();
+         });//버튼에 이벤트 감지가 등록
+
+         bt2.addEventListener("click", function(){
+            setInterval("move()", 10);
+            //현재 버튼을 더이상 못 누르도록 비활성화 시킨다.
+            bt2.disabled = true; //버튼의 비활성화 여부를 true
+             
+         });
+
+         bt3.addEventListener("click", function(){
+            //멈추거나 움직이거나...
+            pause();
+         });
+        
+        document.body.appendChild(bt1);
+        document.body.appendChild(bt2);
+        document.body.appendChild(bt3);
+
+    }
+
+    function move(){
+        if(flag){
+            posX += x;
+            posY += y;
+            // x *= (posX<=0 || posX>= w-ballW) ? -1 : 1;
+            // y *= (posY<=0 || posY>= h-ballH) ? -1 : 1;
+
+            if((posX<=0 || posX >=(w-ballW))){
+                x *= -1;
+            }
+            if((posY<=0 || posY >=(h-ballH))){
+                y *= -1;
+            }
+
+            ball.style.left = posX+"px";
+            ball.style.top = posY+"px";
+        }
+    }
+    
+    function pause(){
+        flag = !flag;
+        
+    }
+
+    </script>
+</head>
+<body onLoad = "init()">
+</body>
+</html>

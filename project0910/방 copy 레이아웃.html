@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#wrapper{
+    width: 800px;
+    height: 600px;
+    background: red;
+    margin: auto;
+    position:relative;
+}
+/*wrapper 자식인 code, content를 부모를 기준으로 배치할 것임*/
+#code{
+    width: 100px;
+    height: 100%;
+    position:absolute;
+    left: 0px;
+    top: 0px;
+    background: #dfdfdf;
+}
+#content{
+    width: 700px;
+    height: 100%;
+    position:absolute;
+    left: 100px;
+    top: 0px;
+    background:green;
+}
+#mask{
+    width: 700px;
+    height: 600px;
+    background: black;
+    opacity: 0.8;
+}
+img, #mask{
+    position:absolute;
+    left: 0px;
+    top: 0px;
+}
+
+</style>
+<script>
+   var flag = false;
+    var light;
+    var op;//스위치 상태를 결정짓는 변수
+   function turn(){
+       //문서내의 pic요소의 src속성을 변경하자!!
+       flag = !flag;
+       light = flag ? "on" : "off";
+       op = flag ? 0.0 : 0.8;
+       document.getElementById("pic").src = "../img/switch/switch_"+light+".png";
+       document.getElementById("mask").style.opacity = op;
+   }
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="code">
+            <img id = "pic" src = "../img/switch/switch_off.png" onclick ="turn()"/>
+        </div>
+        <div id = "content">
+            <img src = "../img/switch/room.jpg" width = "700px" height = "600px"/>
+            <!-- 가장 마지막에 들어가는 것이 위로 올라감 -->
+            <div id = "mask"></div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        #wrapper{
+            width: 800px;
+            height: 600px;
+            margin: auto;
+        }
+
+        #control{
+            width:200px;
+            height: 600px;
+            background: yellow;
+            float: left;
+        }
+
+        #result{
+            width: 600px;
+            height: 600px;
+            float: left;
+        }
+        /*이미지에 대한 스타일*/
+        #pic{
+            width: 100px;
+            height: 100px;
+            opacity: 1;
+            transform: scaleX(1);
+            transform: rotate(40deg);
+            box-sizing: border-box;
+        }
+    </style>
+    <script>
+    /*여기 영역은 html이 아닌 프로그래밍 영역임
+    이 영역이 수행되는 시점은? 브라우저 실행할 떄
+    */
+    var w = 0;  //너비
+    var h = 0;  //높이
+    var scX = 1;
+    var scY = 1;
+    var op = 1;
+    var d = 0;
+    var pos = 0;
+    var bor = 0;
+    function setWidth(){
+        //문서 내의 pic이라는 요소의 css의 너비를 늘린다.
+        w = w+10;
+        document.getElementById("pic").style.width = w +"px";
+
+    }
+
+    function setHeight(){
+        h = h+10;
+        document.getElementById("pic").style.height = h +"px";
+    }
+
+    function setScaleX(){
+        //문서 내의 pic이라는 요소의 css의 scaleX의 값을 늘린다.
+        //참고로 스케일은 너비의 배수를 의미
+        scX = scX+0.5;
+        document.getElementById("pic").style.transform = "scaleX("+scX+")";
+    }
+
+    function setScaleY(){
+        scY = scY+1; 
+        document.getElementById("pic").style.transform = "scaleY("+scY+")";
+    }
+
+    function setOpacity(){
+        //문서내의 pic이라는 요소의 css 중 opacity 변경한다.
+        op = op -0.1;
+        document.getElementById("pic").style.opacity = op;
+
+    }
+
+    function setRotate(){
+        //문서내의 pic이라는 요소의 css 중 rotate를 변경한다.
+        d = d + 5;//5도 씩 양수방향으로 돌린다.(시계방향), 음수(시계반대방향)
+        document.getElementById("pic").style.transform = "rotate("+d+"deg)";
+    }
+
+    function setPosition(){
+        pos = pos + 5;
+        document.getElementById("pic").style.margin = pos+"px";
+    }
+
+    function setBorder(){
+        //문서 내의 pic이라는 요소의 css중 border를 변경한다.
+        bor = bor + 1;
+        document.getElementById("pic").style.border = bor+"px dotted red";
+
+    }
+    </script>
+</head>
+<body>
+    <div id = "wrapper">
+        <div id = "control">
+            <!-- ul이란 un ordered list 순서없는 목록 -->
+            <ul>
+                <li>
+                    <button onclick = "setWidth()">width</button>
+                    <button onclick = "setHeight()">height</button>
+                </li>
+                <li>
+                    <button onclick = "setScaleX()">scaleX</button>
+                    <button onclick = "setScaleY()">scaleY </button>
+                </li>
+                <li>
+                    <button onclick = "setOpacity()">opacity</button>
+                </li>
+                <li>
+                    <button onclick = "setRotate()">rotate</button>
+                </li>
+                <li>
+                    <button onclick = "setPosition()">position</button>
+                </li>
+                <li>
+                    <button onclick = "setBorder()">border</button>
+                </li>
+            </ul>
+        </div>
+        <div id = "result">
+            <img id = "pic" src = "../img/hero/image1.png"/>
+
+        </div>
+    </div>
+</body>
+</html>

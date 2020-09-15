@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var cnt = 1;
+   var n;
+    var img;
+
+    function createBall(){
+        n = document.getElementById("txt").value;
+        n = parseInt(n);//주의) parseInt()대상이 될 수 있는 건 "쌍따옴표"를 벗겼을때
+                                //정수가 될 수 있는 문자만 가능하다.
+        
+       
+        
+        img = document.createElement("img");
+
+
+        if(cnt % n == 0){
+            img.src = "../../../images/football.png";
+        }else{
+            img.src = "../../../images/basketball.png";
+        }
+            img.style.width = 60 + "px";
+            document.body.appendChild(img);
+
+        cnt++;
+    }
+
+    function auto(){
+        setInterval("createBall()", 100);
+    }
+</script>
+<body>
+
+    <input id = "txt" type = "text" placeholder = "몇번째 마다 공을 생성할 지 숫자입력"/>
+    <button onClick = "createBall()">공 생성</button>
+    <button onClick = "auto()">공 생성</button>
+    <br>
+    
+</body>
+</html>

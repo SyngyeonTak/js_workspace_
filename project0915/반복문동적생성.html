@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+
+    div{
+        width: 700px;
+        height: 600px;
+        background: yellow;
+        margin: auto;
+        overflow: scroll; /*자식 요소에 의해 내용이 넘쳐날 경우 스크롤처리*/
+    }
+</style>
+<script>
+    function create(){
+        //지금까지는 문서 내의 요소에 접근하기 위해 아이디를 부여하고 접근
+        //하였으나, 자바스크립트에서는 selector를 이용한 접근방법도 지원한다.
+        //selector란? css에서 요소를 특정짓기 위한 지칭방법
+        var box = document.querySelector("div");//css의 선택자는 모두 표현 가능
+        var num = document.querySelector("input[type='text']").value;
+        //이미지 태그요소를 동적으로 만들어서 box에 추가하자
+        if(!(num = parseInt(num))){
+            alert("숫자를 입력하세요");
+        }else{
+            
+            for(var i = 0; i< num; i++){
+                var img = document.createElement("img"); //<img>와 동일
+                img.src = "../../../images/basketball.png";//<img src = ""/>
+                //box에 추가하기
+                img.style.width = 50+ "px";
+                box.appendChild(img);//box에 추가하기
+            }
+        }       
+    }
+</script>
+</head>
+<body>
+    <button onclick ="create()">동적생성</button>
+    <input type = "text" placeholder = "생성하고픈 개수 입력"/>
+    <div></div>   
+</body>
+</html>
